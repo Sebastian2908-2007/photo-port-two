@@ -1,29 +1,23 @@
-function Nav () {
+import { capitalizeFirstLetter } from "../../utils/helpers";
+import { useEffect } from 'react';
 
-const categories = [
-    {
-        name: "commercial",
-        description:
-        "Photos of grocery stores, food trucks, and other commercial projects",  
-    },
-    { name: "portraits", description: "Portraits of people in my life" },
-    { name: "food", description: "Delecious delacacies" },
-    { 
-        name: "landscape",
+function Nav (props) {
+  const {
+      categories = [],
+      setCurrentCategory,
+      currentCatagory
+  }= props;
 
-        description: "Fields, farmhouses, waterfalls, and the beuty of nature",
-    }
-];
-
-function categorySelected(name) {
-    console.log(`${name} clicked`)
-};
-
-    return (
-        <header>
+  // use effect takes two arguments a function and an array of dependencies when currentCategory value chenges the document.title value will update
+  useEffect(() => {
+      document.title = capitalizeFirstLetter(currentCatagory.name);
+  }, [currentCatagory]);
+  
+ return (
+        <header className="flex-row px-1">
             <h2>
                 <a data-testid="link" href="/">
-                    <span role="img" aria-label="camera">📸</span> Oh Snap!
+                    <span role="img" aria-label="camera">📸</span>Oh Snap!
                 </a>
             </h2>
             <nav>
@@ -38,11 +32,17 @@ function categorySelected(name) {
                     </li>
                     {categories.map((category) => (
                         <li
-                        className="mx-1"
-                        key={category.name}
-                        >
-                            <span onClick={() => categorySelected(category.name)} >
-                                {category.name}
+                        className={`mx-1 ${
+// this short circuit means that currentCategory.name === category.name will get evaluated, and as long as it is true, then the second bit of the short circuit, navActive, will be returned.
+                            currentCatagory.name === category.name &&  'navActive'
+                        }`} key={category.name}>
+                            <span 
+                            onClick={() => {
+                                setCurrentCategory(category)
+                            }} 
+                            
+                            >
+                               {capitalizeFirstLetter(category.name)}
                             </span>
                         </li>
                     ))}
