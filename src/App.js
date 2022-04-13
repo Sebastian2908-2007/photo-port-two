@@ -20,6 +20,8 @@ function App() {
 
   // set state initial state to the first category in our array
   const [currentCatagory, setCurrentCategory] = useState(categories[0]);
+  // hook for displaying contact form or not
+  const [contactSelected, setContactSelected] = useState(false);
 
   return (
     <div>
@@ -27,11 +29,18 @@ function App() {
       categories={categories}
       setCurrentCategory={setCurrentCategory}
       currentCatagory={currentCatagory}
+      contactSelected={contactSelected}
+      setContactSelected={setContactSelected}
       ></Nav>
 <main>
-  <ContactForm></ContactForm>
-  <Gallery currentCatagory={currentCatagory} />
-  <About></About>
+ {!contactSelected ? (
+   <>
+   <Gallery currentCatagory={currentCatagory}></Gallery>
+   <About></About>
+   </>
+ ) : (
+   <ContactForm></ContactForm>
+ )}
 </main>
     </div>
   );
