@@ -5,6 +5,7 @@ import Nav from './components/Nav';
 import { useState } from 'react';
 
 function App() {
+  // this could be declared as just a regular array but...we chose to use the useState hook here so that we can have the option to change the categories at some point in the future.
   const [categories] = useState([
     {
         name: "commercial",
@@ -27,7 +28,7 @@ function App() {
       currentCatagory={currentCatagory}
       ></Nav>
 <main>
-  <Gallery/>
+  <Gallery currentCatagory={currentCatagory} />
   <About></About>
 </main>
     </div>

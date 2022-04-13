@@ -12,7 +12,7 @@ function Nav (props) {
   useEffect(() => {
       document.title = capitalizeFirstLetter(currentCatagory.name);
   }, [currentCatagory]);
-  
+
  return (
         <header className="flex-row px-1">
             <h2>
@@ -33,7 +33,7 @@ function Nav (props) {
                     {categories.map((category) => (
                         <li
                         className={`mx-1 ${
-// this short circuit means that currentCategory.name === category.name will get evaluated, and as long as it is true, then the second bit of the short circuit, navActive, will be returned.
+// this short circuit means that currentCategory.name === category.name will get evaluated, and as long as it is true (sort of like an "if" statement), then the second bit of the short circuit, navActive, will be returned.
                             currentCatagory.name === category.name &&  'navActive'
                         }`} key={category.name}>
                             <span 
