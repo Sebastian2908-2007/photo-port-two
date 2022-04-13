@@ -6,6 +6,8 @@ const categories = [
 ];
 const mockCurrentCategory = jest.fn();
 const mockSetCurrentCategory = jest.fn();
+const mockContactSelected = jest.fn();
+const mockSetContactSelected = jest.fn();
 
 afterEach(cleanup);
 
@@ -16,6 +18,8 @@ it('renders', () => {
     categories={categories}
     setCurrentCategory={mockSetCurrentCategory}
     currentCatagory={mockCurrentCategory}
+    contactSelected={mockContactSelected}
+    setContactSelected={mockSetContactSelected}
         />);
 });
     // snapshot test
@@ -24,6 +28,8 @@ it('renders', () => {
                          categories={categories} 
                          setCurrentCategory={mockSetCurrentCategory} 
                          currentCatagory={mockCurrentCategory} 
+                         contactSelected={mockContactSelected}
+                         setContactSelected={mockSetContactSelected}
                                    />);
 
         expect(asFragment()).toMatchSnapshot();
@@ -38,6 +44,8 @@ describe('emoji is visible', () => {
                                  categories={categories}
                                  setCurrentCategory={mockSetCurrentCategory}
                                  currentCatagory={mockCurrentCategory}
+                                 contactSelected={mockContactSelected}
+                                 setContactSelected={mockSetContactSelected}
                                   />);
 // use getByLabelText method to find element with camera as its aria - label then say we expect the camera emoji to be that elements textContent
         expect(getByLabelText('camera')).toHaveTextContent('📸');
@@ -51,7 +59,9 @@ describe('links are visible', () => {
        const { getByTestId } = render(<Nav
                                categories={categories}
                                setCurrentCategory={mockSetCurrentCategory}
-                               currentCatagory={mockCurrentCategory}     
+                               currentCatagory={mockCurrentCategory}  
+                               contactSelected={mockContactSelected}
+                               setContactSelected={mockSetContactSelected}   
                                />);
        expect(getByTestId('link')).toHaveTextContent('Oh Snap!');
        expect(getByTestId('about')).toHaveTextContent('About Me'); 

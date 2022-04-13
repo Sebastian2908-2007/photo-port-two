@@ -23,6 +23,7 @@ function App() {
   // hook for displaying contact form or not
   const [contactSelected, setContactSelected] = useState(false);
 
+  // the teranery operator in main is equiv to an if else statement
   return (
     <div>
       <Nav
