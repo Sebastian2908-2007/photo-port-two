@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Model Component matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="modalBackdrop"
+  >
+    <div
+      class="modalContainer"
+    >
+      <h3
+        class="modalTitle"
+      >
+        Park bench
+      </h3>
+      <img
+        alt="current-catagory"
+        src="1.jpg"
+      />
+      <p>
+        a beutiful bench alone in the middle of the woods...next to some stairs?
+      </p>
+      <button
+        type="button"
+      >
+        Close this Modal
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;
