@@ -1,7 +1,14 @@
 import { useState } from 'react';
+import Modal from '../Modal';
 
 
 function PhotoList({category}) {
+     // hook to determine if our model is open
+     const [isModalOpen, setIsModalOpen] = useState(false);
+    // hook for keeping track of the photo that needs to be used in Modal
+    const [currentPhoto, setCurrentPhoto] = useState();
+ 
+  
     const [photos] = useState([
         {
             name: 'Grocery aisle',
@@ -101,15 +108,24 @@ function PhotoList({category}) {
         ]);
   // this will return an array of photos from photos array that match the passed in props value in this case "category"
         const currentPhotos = photos.filter((photo) => photo.category === category)
+      
+        // function to toggle our modal on and off
+        const toggleModal = (image,i) => {
+          // Here we updated the current photo state using the setCurrentPhoto function with the data retrieved through the click event.
+             setCurrentPhoto({...image, index: i});
+             setIsModalOpen(true);
+        };
 
   return (
       <div>
+       {isModalOpen && <Modal currentPhoto={currentPhoto} />}
           <div className='flex-row' >
               {currentPhotos.map((image,i) => (
                   <img 
                   src={require(`../../assets/small/${category}/${i}.jpg`)}
                   alt={image.name}
                   className="img-thumbnail mx-1"
+                  onClick={() =>toggleModal(image,i)}
                   key={image.name}
                   />
               ))}
