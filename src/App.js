@@ -3,6 +3,7 @@ import About from './components/About';
 import Gallery from './components/Gallery';
 import Nav from './components/Nav';
 import { useState } from 'react';
+import ContactForm from './components/Contact';
 
 function App() {
   // this could be declared as just a regular array but...we chose to use the useState hook here so that we can have the option to change the categories at some point in the future.
@@ -28,6 +29,7 @@ function App() {
       currentCatagory={currentCatagory}
       ></Nav>
 <main>
+  <ContactForm></ContactForm>
   <Gallery currentCatagory={currentCatagory} />
   <About></About>
 </main>
